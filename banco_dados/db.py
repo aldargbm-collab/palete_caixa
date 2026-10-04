@@ -14,7 +14,9 @@ USER = os.getenv("USER")
 DATABASE = os.getenv("DATABASE")
 PASS = os.getenv("PASS")
 
-url = f"postgresql+psycopg2://{USER}:{PASS}@{HOST}:{PORT}/{DATABASE}"
+# url = f"postgresql+psycopg2://{USER}:{PASS}@{HOST}:{PORT}/{DATABASE}"
+url = f"postgresql+psycopg2://{USER}:{PASS}@{HOST}:{PORT}/{DATABASE}?client_encoding=latin1"
+
 def get_engine() -> Engine:
     return create_engine(url, connect_args={"sslmode": "prefer"}, 
                          pool_pre_ping=True)
